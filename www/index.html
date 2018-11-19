@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+  <script src="components/loader.js"></script>
+  <script src="lib/onsenui/js/onsenui.min.js"></script>
+
+  <link rel="stylesheet" href="components/loader.css">
+  <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
+  <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script>
+function button(btnNo){
+//-----【ボタン１を押したときの挙動】
+	if (btnNo == 1){
+		location.href = 'page2.html';}
+//-----【ボタン２を押したときの挙動】
+	else if (btnNo == 2){
+		location.href = 'page1.html';}
+//-----【ボタン３を押したときの挙動】
+	else if (btnNo == 3){
+		location.href = 'page3.html';}
+//-----【ボタン４を押したときの挙動】
+  else{
+    document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() {
+    console.log(navigator.camera);}
+    alert('ボタン4を押しました！');}
+
+}
+  </script>
+</head>
+<body>
+  <ons-navigator id="navigator" page="page2.html">top</ons-navigator>
+
+  <ons-template id="page2.html">
+    <ons-page id="first-page">
+      <ons-toolbar>
+        <div class="center">トップページ</div>
+      </ons-toolbar>
+
+      <div class="content" style="text-align: center">
+        <h1>Bingo Generator</h1>
+        <ons-button id="start" onClick="button(1)">★BINGO START★</ons-button>
+        <br><br>
+        <ons-button id="continue" onClick="button(2)">使い方など</ons-button>
+        <br><br><br>
+        <ons-button id="continue" onClick="button(3)">おみくじ（練習）</ons-button>
+        <br><br>
+        <ons-button id="continue" onClick="button(4)">●カメラ起動（練習）</ons-button>
+        <p>&copy;2018</p>
+      </div>
+   </ons-page>
+  </ons-template>
+
+
+</body>
+</html>

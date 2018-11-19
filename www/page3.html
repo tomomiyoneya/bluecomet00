@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+  <script src="components/loader.js"></script>
+  <script src="lib/onsenui/js/onsenui.min.js"></script>
+
+  <link rel="stylesheet" href="components/loader.css">
+  <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
+  <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+        //
+	var i = 0;
+	var omikuji = new Array(100);
+	//おみくじの中に0～100まで入れていきますね
+		for ( var i = 0; i < 100; i++){
+		omikuji[i] = i+1;}
+	omikuji.length = 100;		//とりあえず長さを100とする
+	var kekka;
+
+console.log("おみくじ種類"+omikuji+"、おみくじの長さ"+omikuji.length)
+
+//ボタンを押したときの処理
+function button(){
+	var kekka = Math.floor( Math.random() * omikuji.length );
+
+//確率順　吉＞末吉＞中吉＞凶＞大吉
+//50>25>15>7>3
+	if ( kekka < 7 ){
+		var a = ("大吉");
+		var b = ("やったね！");}
+	else if( kekka < 15 ){
+		var a = ("凶");
+		var b = ("残念だったね！");}
+	else if( kekka < 25 ){
+		var a = ("中吉");
+		var b = ("中くらいの良さ。");}
+	else if( kekka < 50){
+		var a = ("末吉");
+		var b = ("終わり良ければ総て良し");}
+	else{
+		var a = ("吉");
+		var b = ("全てに於いて良し");}
+
+/*【確率やりすぎた方】
+	if ( kekka < 3 ){
+		var a = ("大吉");
+		var b = ("やったね！");}
+	else if( kekka < 10 ){
+		var a = ("凶");
+		var b = ("残念だったね！");}
+	else if( kekka < 25 ){
+		var a = ("中吉");
+		var b = ("中くらいの良さ。");}
+	else if( kekka < 50){
+		var a = ("末吉");
+		var b = ("終わり良ければ総て良し");}
+	else{
+		var a = ("吉");
+		var b = ("全てに於いて良し");}
+*/
+console.log("運勢："+a+"、今の結果："+kekka);
+
+//innnerHTMLで書き換える
+	document.getElementById('NowNum').innerHTML = ("<h1>"+a+"</h1>");
+	document.getElementById('list').innerHTML = ("<li><br>"+b+"</li>");
+}
+
+        //
+    </script>
+</head>
+<body>
+  <ons-navigator id="navigator" page="page3.html"></ons-navigator>
+
+  <ons-template id="page3.html">
+    <ons-page id="thirds-page">
+      <ons-toolbar>
+        <div class="center"><a href="index.html">Page3</a></div>
+      </ons-toolbar>
+      <div class="content" style="text-align: center">
+        <p>↓結果↓</p>
+        <div id="NowNum" style="width: 200px;margin: auto;padding: 2px 0px;background: white;color: red;"><h1>----</h1></div>
+        <ons-button id="uranau" onClick="button()">占う！</ons-button>
+     <ul id="list" style="width: 180px;height: 180px;margin: auto;padding: 0px 10px;background-color: #DDDDDD;color: DimGray;text: 12px;overflow:scroll;list-style: none;"></ul>
+<div id="footer">&copy;2018</div>
+      </div>
+</center>
+</ons-page>
+  </ons-template>
+
+</body>
+</html>
